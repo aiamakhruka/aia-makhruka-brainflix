@@ -1,0 +1,85 @@
+@use "./variables" as*;
+
+/////screen-break-points
+
+@mixin tablet {
+    @media (min-width:$tablet-braking-point) {
+        @content;
+    }
+}
+
+@mixin desktop{
+    @media (min-width:$desktop-braking-point){
+        @content;
+    }
+}
+
+
+
+/////mobile-fonts
+
+@mixin page-header-mobile{
+    font-size: 1.5rem;
+    line-height: 2rem;
+    font-weight: 700;  
+}
+
+@mixin section-header-mobile{
+    font-size: 0.75rem;
+    line-height: 1.25rem;
+    font-weight: 700; 
+}
+
+@mixin subheader-mobile{
+    font-size: 0.8125rem;
+    line-height:1.125rem;
+    font-weight: 700;
+}
+
+@mixin body-copy-mobile{
+    font-size: 0.8125rem;
+    line-height:1.125rem;
+    font-weight: 400;
+}
+
+
+@mixin labels-buttons-mobile{
+        font-size: 0.625rem;
+        line-height: 1.25rem;
+        font-weight: 700;
+}
+
+
+
+/////tablet-desktop-fonts
+
+@mixin page-header-tab-desk{
+    font-size: 2.0625rem;
+    line-height: 2.75rem;
+    font-weight: 700;  
+}
+
+@mixin section-header-tab-desk{
+        font-size: 0.75rem;
+        line-height: 1.25rem;
+        font-weight: 700;
+}
+
+@mixin subheader-tab-desk{
+    font-size: 0.875rem;
+    line-height: 1.375rem;
+        font-weight: 700;
+}
+
+@mixin body-copy-tab-desk{
+        font-size: 0.875rem;
+        line-height:1.375rem;
+        font-weight: 400;
+}
+
+
+@mixin labels-buttons-tab-desk{
+        font-size: 0.75rem;
+        line-height: 1.25rem;
+        font-weight: 700;
+}
