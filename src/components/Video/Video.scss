@@ -1,0 +1,61 @@
+@use '../../styles/partials/mixin' as*;
+@use '../../styles/partials/variables' as*;
+
+
+.next-video-container{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin-bottom: $padding-between-contant;
+    @include tablet{
+        margin-bottom: $padding-after-header-tab-desktop;
+        width: 50%;
+
+    }
+
+    @include desktop{
+        width: 100%;
+    }
+
+}
+
+.video-thumbnail{
+    width: 40%;
+    height: 5rem;
+
+
+    &__image{
+        border-radius: 4px;
+        width:100%;
+        height: 100%;
+        object-fit: cover; 
+    }
+}
+
+.video-details{
+    width: 60%;
+    padding: 0rem 0rem  0rem $padding-between-contant ;
+
+}
+
+.video-title{
+    @include section-header-mobile;
+    font-size: 0.9rem;
+    line-height:1.3rem;
+    color: $brainflix-black;
+    @include tablet{
+        @include subheader-tab-desk;
+        font-size: 1rem;
+    }
+}
+
+.video-channel{
+    @include body-copy-mobile;
+    line-height:1.5rem;
+    @include tablet{
+        @include body-copy-tab-desk;
+        line-height:2rem;
+        font-size: 1rem;
+    }
+
+}
