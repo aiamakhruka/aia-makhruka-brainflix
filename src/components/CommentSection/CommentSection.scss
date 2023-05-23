@@ -1,0 +1,147 @@
+@use '../../styles/partials/mixin' as*;
+@use '../../styles/partials/variables' as*;
+
+.comment-section{
+    padding-inline:$margins-in-mobile ;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    @include tablet{
+        padding-inline: $margins-in-tablet;    
+    }
+    @include desktop{
+        padding-inline: 0rem;    
+
+    }
+}
+
+.comments-counter{
+    @include subheader-mobile;
+    color:$brainflix-black;
+    font-weight: 600;
+    font-size: 0.8rem;
+    margin-bottom: $padding-between-contant;
+    @include tablet{
+        @include subheader-tab-desk;
+    }
+}
+
+.comments-header{
+    @include section-header-mobile;
+    color: $silver;
+    font-weight: 600;
+    margin-left: 3.25rem;
+    @include tablet{
+        @include section-header-tab-desk;
+        font-weight: 600;
+        margin:0rem 0rem 0.3rem 3.25rem;
+    }
+
+}
+
+.comments-container{
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px  solid $mercury;
+
+    @include tablet{
+        width: 100%;
+        padding-bottom: 1rem;
+    }
+}
+
+.avatar-container{
+    @include tablet{
+        // width: fit-content;
+        width: 8%;
+    }
+}
+
+.comment-avatar{
+    border-radius: 50%;
+    background-color: $mercury;
+    width: 2.25rem;
+    height: 2.25rem;
+    margin-right: 1rem;
+
+}
+
+.comment-input-container{
+    width: fit-content;
+    @include tablet{
+        display: flex;
+        width: 92%;
+    }
+}
+
+.comment-area{
+    margin-bottom: 0.8rem;
+    width: 15rem;
+    height:6rem;
+    border-radius: 4px;
+    resize: none;
+    background-color: $Alabaster;
+    padding: 0.75rem;
+    border: 1px  solid $mercury;
+    
+    @include tablet{
+        height: 2.5rem;
+        padding: 0.5rem;
+        width: 80%;
+
+    }
+
+    &:focus{
+        outline:none;
+        border: 2px  solid $brainflix-blue;
+    }
+  
+    &:invalid:not(:placeholder-shown){
+            border: 1px  solid #D22D2D;
+    }
+
+    &::placeholder{
+        @include  labels-buttons-mobile ;
+        font-size: 0.8125rem;
+        font-weight: 400;
+        color: $brainflix-black;
+    }
+}
+
+.comment-button{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 2.5rem;
+    // width: 9.375rem;
+    margin-bottom: $padding-between-contant ;
+    width: 100%;
+    border-radius: .25rem;
+    padding-inline : 2rem;
+    background-color: $brainflix-blue;
+    color: $white;
+    border-style: none;
+
+    &:hover{
+        background-color: $brainflix-darkblue;
+    }
+
+    @include tablet{
+
+        // width: 9.375rem;
+        margin-left: 1rem;
+        width: 22%;
+        padding-inline : 1rem;
+
+    }
+    @include desktop{
+        margin: 0rem 1.5rem;
+    }
+
+    &__icon{
+        @include tablet{
+            width: 1rem;
+            margin-inline: 0.5rem;
+        }
+    }
+}

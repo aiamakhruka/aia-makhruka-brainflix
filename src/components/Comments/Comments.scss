@@ -1,0 +1,70 @@
+@use '../../styles/partials/mixin' as*;
+@use '../../styles/partials/variables' as*;
+
+.comment-container{
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px  solid $mercury;
+    width: 100%;
+    padding: $padding-between-contant 0rem;
+
+    @include tablet{
+        padding: 2rem 0rem;
+        width: 100%;
+
+    }
+    @include desktop{
+        padding-right: 1rem;
+
+    }
+
+}
+
+.avatar-container{
+    width: 20%;
+    @include tablet{
+        width: 10%;
+    }
+}
+
+.avatar{
+    border-radius: 50%;
+    background-color: $mercury;
+    width: 2.25rem;
+    height: 2.25rem;
+    margin-right: 1rem;
+
+}
+
+
+.comment-section-container{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+
+    @include tablet{
+        width: 92%;
+    }
+}
+
+.date-name-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-bottom: $padding-between-contant;
+    @include tablet{
+        padding-bottom: 0.5rem;
+    }
+}
+
+.name{
+    @include subheader-mobile;
+    font-size: 0.9rem;
+    color:$brainflix-black;
+}
+
+.date{
+    @include body-copy-mobile;
+    font-size: 0.9rem;
+    color:$silver;
+}
