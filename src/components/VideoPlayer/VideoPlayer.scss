@@ -1,0 +1,29 @@
+@use '../../styles/partials/mixin' as*;
+@use '../../styles/partials/variables' as*;
+
+.video-player-container{
+    background-color: $brainflix-dark-black;
+    width: 100%;
+    height :100%;
+
+    @include desktop{
+        margin: 0rem auto;
+    }
+}
+
+.video{
+    width: 100%;
+    @include tablet{
+        width: 90%;
+        margin-inline:$margins-in-tablet;
+    }
+    
+    @include desktop{
+        width: 65%;
+        margin-inline:14rem;
+        max-width: 1020px;
+
+    }
+
+
+}
