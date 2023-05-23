@@ -1,6 +1,35 @@
 @use "./styles/partials/typography" as*;
+@use './styles/partials/mixin' as*;
+@use './styles/partials/variables' as*;
 
 *{
 margin: 0;
 box-sizing: border-box;
+}
+
+body{
+    font-family: 'Avenir';
+}
+
+.main-page{
+    @include desktop{
+        max-width: 1020px;
+        margin-inline:auto; 
+        display: flex;
+        // flex-wrap: wrap;
+        width: 100%;
+    }
+}
+
+.main-page__left{
+    @include desktop{
+        width: 60%;
+    }
+    
+}
+.main-page__right{
+    @include desktop{
+        width: 40%;
+    }
+
 }
