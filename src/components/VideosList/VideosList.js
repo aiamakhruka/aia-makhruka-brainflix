@@ -1,17 +1,23 @@
 import Video from "../Video/Video.js";
-import './VideosList.scss';
+import "./VideosList.scss";
+import { useParams } from "react-router-dom";
 
-function VideosList({VideosListData ,changeCurrentVideo}) {
+function VideosList({ videosArray }) {
 
-    return(
+  const { videoId } = useParams();
 
+  const fillteredArray = videosArray.filter((video) => {
+    return video.id !== videoId;
+  });
+
+  return (
     <section className="videos-list">
-        <h2 className="header">NEXT VIDEOS</h2>
-       {VideosListData.map((VideoData)=>{
-            return( 
-        <Video VideoData={VideoData}  changeCurrentVideo={changeCurrentVideo} />
-            )
-        })}
-    </section>)
+      <h2 className="videos-list__header">NEXT VIDEOS</h2>
+      {fillteredArray.map((videoData) => {
+        window.scrollTo(0, 0);
+        return <Video videoData={videoData} key={videoData.id} />;
+      })}
+    </section>
+  );
 }
 export default VideosList;

@@ -52,32 +52,34 @@
 
     }
 
-    .auther-date{
+    .infos{
         @include tablet{
             display: flex
 
         }
-    }
 
-    .auther{
-        @include subheader-mobile;
-        margin-bottom: $padding-after-header;
-        @include tablet{
-            @include subheader-tab-desk;
-            margin-right: 2rem;
-            
+        &__auther{
+            @include subheader-mobile;
+            margin-bottom: $padding-after-header;
+            @include tablet{
+                @include subheader-tab-desk;
+                margin-right: 2rem;
+                
+            }
         }
-    }
-
-    .date{
-        @include subheader-mobile;
-        color:$silver;
-        font-weight: 200;
-        @include tablet{
-            @include subheader-tab-desk;
+        
+        &__date{
+            @include subheader-mobile;
+            color:$silver;
             font-weight: 200;
+            @include tablet{
+                @include subheader-tab-desk;
+                font-weight: 200;
+            }
         }
     }
+
+
 
     .views-likes{
         color:$silver;

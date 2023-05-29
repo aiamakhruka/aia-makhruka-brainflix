@@ -1,34 +1,28 @@
-@use '../../styles/partials/mixin' as*;
-@use '../../styles/partials/variables' as*;
+@use "../../styles/partials/mixin" as *;
+@use "../../styles/partials/variables" as *;
 
-
-
-
-
-.videos-list{
-    padding-inline:$margins-in-mobile ;
-    @include tablet{
-        padding-inline: $margins-in-tablet;   
-        width: 100%; 
+.videos-list {
+    padding-inline: $margins-in-mobile;
+    @include tablet {
+        padding-inline: $margins-in-tablet;
+        width: 100%;
     }
-    
-    @include desktop{
-        padding-inline: 0rem;   
-        padding:0rem 0rem 0rem 1rem;
+
+    @include desktop {
+        padding-inline: 0rem;
+        padding: 0rem 0rem 0rem 1rem;
         border-left: 1.5px solid $mercury;
     }
-}
 
-
-.header{
-    @include section-header-mobile;
-    padding: $padding-between-contant 0rem;
-    color: $silver;
-    @include tablet{
-        @include section-header-tab-desk;
-        padding: 2rem 0rem;
-        font-size: 1rem;
-        font-weight: 600;
-
+    &__header {
+        @include section-header-mobile;
+        padding: $padding-between-contant 0rem;
+        color: $silver;
+        @include tablet {
+            @include section-header-tab-desk;
+            padding: 2rem 0rem;
+            font-size: 1rem;
+            font-weight: 600;
+        }
     }
 }

@@ -1,72 +1,78 @@
-@use '../../styles/partials/mixin' as*;
-@use '../../styles/partials/variables' as*;
+@use "../../styles/partials/mixin" as *;
+@use "../../styles/partials/variables" as *;
 
-.nav-bar{
+.nav-bar {
     display: flex;
     flex-direction: column;
     align-items: center;
     flex-wrap: wrap;
     width: 100%;
     padding: $padding-between-contant $margins-in-mobile;
+    border-bottom: 2px solid $mercury;
 
-    @include tablet{
+    @include tablet {
         flex-direction: row;
         justify-content: space-between;
-        padding-inline: $margins-in-tablet;         
+        padding-inline: $margins-in-tablet;
     }
-    @include desktop{
+    @include desktop {
         max-width: 1020px;
         margin: 0rem auto;
-        padding-inline: 2rem;         
+        padding-inline: 2rem;
     }
 
-    &__logo{
+    &__logo {
         width: 7.5rem;
         height: 1.5625rem;
-        @include tablet{
-
+        @include tablet {
         }
     }
-    
-    &__container{
+
+    &__container {
         width: 100%;
-        @include tablet{
-           width: 65%;
-           display: flex;
+        @include tablet {
+            width: 70%;
+            display: flex;
+        }
+        @include desktop {
+            width: 55%;
+            display: flex;
         }
     }
 
-    .search-bar-container{
+    .search-bar-container {
         display: flex;
         width: 100%;
         justify-content: space-between;
         padding: $padding-between-contant 0rem;
-
-        @include tablet{
+        
+        @include tablet {
             padding: 0rem;
         }
+      
 
-        .search-bar{
-            width: 90%;
+        .search-bar {
+            width: 85%;
             height: 2.5rem;
             padding-left: 2rem;
             background-color: $Alabaster;
-            border: 1px  solid $silver;
+            border: 1px solid $mercury;
             border-radius: 5px;
-            background-position: 10px center ;
+            background-position: 10px center;
             background-repeat: no-repeat;
             background-image: url(../../assets/icons/search.svg);
-            @include tablet{
+            @include tablet {
+                width: 100%;
                 order: 1;
             }
-    
-            &:focus{
-                outline:none;
-                border: 2px  solid $brainflix-blue;
+
+            &:focus {
+                outline: none;
+                border: 2px solid $brainflix-blue;
             }
-        
-            &::placeholder{
-                @include  labels-buttons-mobile ;
+
+            &::placeholder {
+                @include labels-buttons-mobile;
                 font-size: 0.8125rem;
                 font-weight: 400;
                 color: $brainflix-black;
@@ -74,64 +80,63 @@
         }
     }
 
-    
-    .profile-picture{
+    .profile-picture {
         border-radius: 50%;
         background-color: $mercury;
         width: 2.25rem;
         height: 2.25rem;
         margin-left: 1rem;
-        @include tablet{
+        @include tablet {
             display: none;
-
         }
     }
 
-    .profile-picture-tabDes{
+    .profile-picture-tabDes {
         display: none;
         border-radius: 50%;
         background-color: $mercury;
         width: 2.25rem;
         height: 2.25rem;
         margin-left: 1rem;
-        @include tablet{
+        @include tablet {
             margin: 0rem 1rem 0rem 0rem;
             display: inline;
         }
-
     }
-    
-    .upload-button{
-            @include labels-buttons-mobile;
-            font-size: 0.8rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            width: 100%;
-            height: 2.5rem;
-            border-radius: .25rem;
-            background-color: $brainflix-blue;
-            color: $white;
-            border-style: none;
 
-            &__icon{
-            width: 1.5rem;
-
-            }
-
-            &:hover{
-                background-color: $brainflix-darkblue;
-            }
-            @include tablet{
-                @include labels-buttons-tab-desk;
-                justify-content: space-around;
-                width: 18rem;
-                padding-right: 2rem;
-                margin-inline: 1rem;
-            }
-
-            @include desktop{
-                margin: 0rem 1.5rem;
-            }
+    .upload-button {
+        @include labels-buttons-mobile;
+        font-size: 0.8rem;
+        display: flex;
+        align-items: center;
+        justify-content:flex-start;
+        gap: 30%;
+        width: 100%;
+        height: 2.5rem;
+        border-radius: 0.25rem;
+        background-color: $brainflix-blue;
+        color: $white;
+        border-style: none;
+        text-decoration: none;
+   
+        @include tablet {
+            @include labels-buttons-tab-desk;
+            gap: 20%;
+            margin-inline: 1rem;
+            width: 60%;
         }
+        
+        @include desktop {
+            margin: 0rem 1.5rem;
+        }
+
+        &__icon {
+            margin-left: 16px;
+            width: 1.5rem;
+        }
+
+        &:hover {
+            background-color: $brainflix-darkblue;
+        }
+    }
 }
