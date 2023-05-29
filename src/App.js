@@ -1,42 +1,69 @@
-import './App.scss';
-import PlayNextVideos from './data/videos.json'
-import  { useState } from 'react';
-import CurrentVideos from './data/video-details.json';
-import NavBar from './components/NavBar/NavBar';
-import VideoPlayer from './components/VideoPlayer/VideoPlayer';
-import VideoPlayerDetail from './components/VideoPlayerDetail/VideoPlayerDetail';
-import VideosList from './components/VideosList/VideosList';
-import CommentSection from './components/CommentSection/CommentSection';
+import "./App.scss";
+import "./components/NavBar/NavBar.scss";
+import NavBar from "./components/NavBar/NavBar";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Navigate,
+  useParams,
+} from "react-router-dom";
+import { useState, useEffect } from "react";
+import { GetVideosURL } from "./utility/API";
+import HomePage from "./pages/HomePage/HomePage";
+import UploadPage from "./pages/UploadPage/UploadPage";
+import NotFound from "./pages/ErrorPage/NotFound";
+import axios from "axios";
+import LoadingPage from "./pages/LoadingPage/LoadingPage";
+
 
 function App() {
+  const { videoId } = useParams();
 
-const [CurrentVideo , setCurrentVideo] = useState(CurrentVideos[0]);
-const changeCurrentVideo = (VideoDataId)=>{
-  const newVideo= CurrentVideos.find((video)=>{
-    console.log(video,VideoDataId)
-    return  video.id===VideoDataId 
-  } )
+  const [firstVideoId, setfirstVideoId] = useState(null);
+  const [videosArray, setvideosArray] = useState([]);
+  const [isLoading, setisLoading] = useState(true);
+  const [hasError, sethasError] = useState(false);
 
-  setCurrentVideo(newVideo)
-}
-
-const fillteredArray =PlayNextVideos.filter((video)=>{
-  return video.id!==CurrentVideo.id
-})
+  useEffect(() => {
+    if (!videoId) {
+      axios
+        .get(GetVideosURL)
+        .then((response) => {
+          setisLoading(false);
+          setfirstVideoId(response.data[0].id);
+          setvideosArray(response.data);
+        })
+        .catch(() => {
+          sethasError(true);
+          setisLoading(false);
+        });
+    }
+  }, []);
+  if (isLoading) {
+    return <LoadingPage />;
+  }
+  if (hasError) {
+    return <NotFound/>;
+  }
 
   return (
     <>
-      <NavBar/>
-      <VideoPlayer PlayingVideo={CurrentVideo}/>
-      <main className='main-page'>
-      <section className='main-page__left'>
-      <VideoPlayerDetail VideoDetails={CurrentVideo}/>
-      <CommentSection CommentsDetails={CurrentVideo.comments}/>
-      </section>
-      <section className='main-page__right'>
-      <VideosList VideosListData={fillteredArray} changeCurrentVideo={changeCurrentVideo}/>
-      </section>
-      </main>
+      <BrowserRouter>
+        <NavBar />
+        <Routes>
+          <Route
+            path="/"
+            element={<Navigate to={`/videos/${firstVideoId}`} />}
+          />
+          <Route
+            path="/videos/:videoId"
+            element={<HomePage videosArray={videosArray} />}
+          />
+          <Route path="/upload" element={<UploadPage />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }
