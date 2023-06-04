@@ -6,7 +6,7 @@ import avatar from "../../assets/images/Mohan-muruge.jpg";
 function CommentSection({ currentVideo }) {
   return (
     <section className="comments">
-      <h3 className="comments__counter">3 Comments</h3>
+      <h3 className="comments__counter">{currentVideo.comments.length} Comments</h3>
       <h2 className="comments__header">JOIN THE CONVERSATION</h2>
       <div className="comments-container">
         <div className="profile">

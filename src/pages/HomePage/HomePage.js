@@ -4,15 +4,16 @@ import VideoPlayerDetail from "../../components/VideoPlayerDetail/VideoPlayerDet
 import VideosList from "../../components/VideosList/VideosList";
 import CommentSection from "../../components/CommentSection/CommentSection";
 import { GetVideoIdURL } from "../../utility/API";
-import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import LoadingPage from "../LoadingPage/LoadingPage";
 import NotFound from "../../pages/ErrorPage/NotFound";
+import { useParams } from "react-router-dom";
+
 
 function HomePage({ videosArray }) {
   
-  const { videoId } = useParams();
+  const {videoId}=useParams();
   const [currentVideo, setCurrentVideo] = useState(null);
   const [isLoading, setisLoading] = useState(true);
   const [hasError, sethasError] = useState(false);

@@ -1,20 +1,49 @@
 import "./UploadPage.scss";
 import Thumbnail from "../../assets/images/Upload-video-preview.jpg";
 import PublishIcon from "../../assets/icons/publish.svg";
-import { useState } from "react";
+import { useState ,useRef} from "react";
 import { useNavigate } from "react-router-dom";
+import { GetVideosURL } from "../../utility/API";
+import axios from "axios";
 
 function UploadPage() {
   const [isPublished, setisPublished] = useState(false);
   const navigate = useNavigate();
 
+  const titleRef = useRef();
+  const descriptionRef = useRef();
+  
   const handelSubmition = (e) => {
     e.preventDefault();
+    
+    const titleValue = titleRef.current.value;
+    const descriptionValue = descriptionRef.current.value;
+
+    if (!titleValue || !descriptionValue) {
+      alert('Please fill out both fields');
+      return;
+    }
+
+    const uploadVideo ={
+      title:titleValue,
+      description:descriptionValue
+    };
+  
+    axios
+    .post(GetVideosURL,uploadVideo)
+    .then((response) => {console.log(response.data);})
+    .catch((error) => {
+      console.log(error);
+    });
+
     setisPublished(true);
     setTimeout(() => {
       setisPublished(false);
       navigate("/");
     }, 3000);
+  };
+  const handelCancelation = () => {
+      navigate("/");
   };
 
   return (
@@ -36,6 +65,7 @@ function UploadPage() {
               type="text"
               placeholder="Add a title to your video"
               name="title"
+              ref={titleRef}
             />
             <label className="form__labels" htmlFor="description">
               ADD A VIDEO DESCRIPTION
@@ -45,26 +75,19 @@ function UploadPage() {
               type="text"
               placeholder="Add a description to your video"
               name="description"
+              ref={descriptionRef}
+
             ></textarea>
-            <div className="upload__info upload__info--mobile">
+            <div className="upload__info">
               <button className="form__publish-button">
                 <img src={PublishIcon} />
                 PUBLISH
               </button>
-              <button type="reset" className="cancel-button">
+              <button type="reset" className="cancel-button" onClick={handelCancelation}>
                 CANCEL
               </button>
             </div>
           </form>
-        </div>
-        <div className="upload__info upload__info--desktop">
-          <button className="form__publish-button" onClick={handelSubmition}>
-            <img src={PublishIcon} />
-            PUBLISH
-          </button>
-          <button type="reset" className="cancel-button">
-            CANCEL
-          </button>
         </div>
       </section>
     </>
