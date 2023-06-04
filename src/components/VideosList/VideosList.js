@@ -19,5 +19,6 @@ function VideosList({ videosArray }) {
       })}
     </section>
   );
+  
 }
 export default VideosList;

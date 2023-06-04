@@ -1,134 +1,121 @@
-@use '../../styles/partials/mixin' as*;
-@use '../../styles/partials/variables' as*;
+@use "../../styles/partials/mixin" as *;
+@use "../../styles/partials/variables" as *;
 
-
-.video-detail{
+.video-detail {
     color: $brainflix-black;
-    padding-inline:$margins-in-mobile ;
+    padding-inline: $margins-in-mobile;
     display: flex;
     flex-direction: column;
 
-    @include tablet{
+    @include tablet {
         padding-inline: $margins-in-tablet;
     }
-    
-    @include desktop{
+
+    @include desktop {
         padding-inline: 0rem;
     }
 
-    &__header{
+    &__header {
         @include page-header-mobile;
         color: $brainflix-black;
-        font-weight: 600;  
-        padding:$padding-between-contant 0rem $padding-between-contant 0rem;
+        font-weight: 600;
+        padding: $padding-between-contant 0rem $padding-between-contant 0rem;
         border-bottom: 1.5px solid $mercury;
-        @include tablet{
+        @include tablet {
             @include page-header-tab-desk;
-            padding:$padding-before-header-tab-desktop 0rem $padding-between-contant 0rem;
+            padding: $padding-before-header-tab-desktop 0rem $padding-between-contant 0rem;
             border-bottom: 0rem;
         }
-        @include desktop{
+        @include desktop {
             padding-right: 1rem;
         }
     }
 
-    &__container{
+    &__container {
         display: flex;
         justify-content: space-between;
-        padding:$padding-between-contant 0rem $padding-between-contant 0rem;
+        padding: $padding-between-contant 0rem $padding-between-contant 0rem;
         border-bottom: 1.5px solid $mercury;
-        @include tablet{
-            padding:0rem ;
+        @include tablet {
+            padding: 0rem;
             justify-content: space-between;
         }
 
-        @include desktop{
+        @include desktop {
             padding-right: 1rem;
         }
     }
 
-    .spacing{
-        display: none;
-
-    }
-
-    .infos{
-        @include tablet{
-            display: flex
-
+    .infos {
+        @include tablet {
+            display: flex;
         }
 
-        &__auther{
+        &__auther {
             @include subheader-mobile;
             margin-bottom: $padding-after-header;
-            @include tablet{
+            @include tablet {
                 @include subheader-tab-desk;
                 margin-right: 2rem;
-                
             }
         }
-        
-        &__date{
+
+        &__date {
             @include subheader-mobile;
-            color:$silver;
+            color: $silver;
             font-weight: 200;
-            @include tablet{
+            @include tablet {
                 @include subheader-tab-desk;
                 font-weight: 200;
             }
         }
     }
+}
 
-
-
-    .views-likes{
-        color:$silver;
-        display: flex;
-        flex-direction: column;
-        @include tablet{
-            flex-direction: row;
-        }
+.views-likes {
+    color: $silver;
+    display: flex;
+    flex-direction: column;
+    @include tablet {
+        flex-direction: row;
     }
+}
 
-    .views{
-        @include subheader-mobile;
-        margin-bottom: 0.5rem;
+.views {
+    @include subheader-mobile;
+    margin-bottom: 0.5rem;
+    font-weight: 200;
+    @include tablet {
+        @include subheader-tab-desk;
+        margin-right: 2rem;
         font-weight: 200;
-        @include tablet{
-            @include subheader-tab-desk;
-            margin-right: 2rem;
-            font-weight: 200;
-        }
-
-        &__icon{
-            padding-right: 0.5rem;
-        }
     }
 
-    .likes{
-        @include subheader-mobile;
+    &__icon {
+        padding-right: 0.5rem;
+    }
+}
+
+.likes {
+    @include subheader-mobile;
+    font-weight: 200;
+    @include tablet {
+        @include subheader-tab-desk;
         font-weight: 200;
-        @include tablet{
-            @include subheader-tab-desk;
-            font-weight: 200;
-        }
-        &__icon{
-            padding-right: 0.5rem;
-        }
     }
-
-    .video-description{
-        @include body-copy-mobile;
-        padding: $padding-between-contant 0rem;
-        @include tablet{
-            @include body-copy-tab-desk;
-            font-size: 1rem;
-
-        }
-        @include desktop{
-            padding-right: 1rem;
-
-        }
+    &__icon {
+        padding-right: 0.5rem;
     }
+}
 
+.video-description {
+    @include body-copy-mobile;
+    padding: $padding-between-contant 0rem;
+    @include tablet {
+        @include body-copy-tab-desk;
+        font-size: 1rem;
+    }
+    @include desktop {
+        padding-right: 1rem;
+    }
 }
